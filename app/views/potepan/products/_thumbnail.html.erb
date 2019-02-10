@@ -1,0 +1,32 @@
+<div class="media-left productSlider">
+
+  <div id="carousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <% @image.each_with_index do |img, index| %>
+        <div class="item <%= " active" if index == 0 %>" data-thumb="<%= index %>">
+          <%= image_tag img.attachment(:large) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="clearfix">
+    <div id="thumbcarousel" class="carousel slide" data-interval="false">
+      <div class="carousel-inner">
+        <% @image.each_with_index do |img, index| %>
+          <div data-target="#carousel" data-slide-to="<%= index %>" class="thumb">
+            <%= image_tag img.attachment(:small)%>
+          </div>
+        <% end %>
+      </div>
+
+      <a class="left carousel-control" href="#thumbcarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="right carousel-control" href="#thumbcarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+    </div>
+  </div>
+
+</div>
